@@ -266,6 +266,10 @@ function react(btn){
 }
 
 function showEnd(){
+  if(window.ReactNativeWebView){
+    const toSeeCount=Object.values(reactions).filter(r=>r&&(r.key==='vedere'||r.key==='curioso')).length;
+    window.ReactNativeWebView.postMessage(JSON.stringify({type:'GAME_END',score:toSeeCount*10+20}));
+  }
   showScr('s-end');
   const toSee=queue.filter(f=>reactions[f.title]&&(reactions[f.title].key==='vedere'||reactions[f.title].key==='curioso'));
   const seen=queue.filter(f=>reactions[f.title]&&reactions[f.title].key==='visto');
