@@ -324,6 +324,9 @@ function showStreak(){
 }
 
 function showEnd(){
+  if(window.ReactNativeWebView){
+    window.ReactNativeWebView.postMessage(JSON.stringify({type:'GAME_END',score:score}));
+  }
   showScr('s-end');
   document.getElementById('end-pts').textContent=String(score).padStart(3,'0');
   document.getElementById('end-sub').textContent='Vite rimaste: '+'❤️'.repeat(Math.max(0,lives));
