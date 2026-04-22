@@ -372,6 +372,9 @@ function advanceRound(){
 }
 
 function showChampion(){
+  if(window.ReactNativeWebView){
+    window.ReactNativeWebView.postMessage(JSON.stringify({type:'GAME_END',score:50}));
+  }
   const champion=nextRound[0]||matchHistory[matchHistory.length-1]?.winner;
   showScr('s-end');
 
